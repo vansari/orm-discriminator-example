@@ -1,5 +1,3 @@
-CREATE SCHEMA public;
-
 CREATE TYPE public.status AS ENUM (
     'Customer', 'Ex-Customer', 'Broker', 'Subbroker'
 );

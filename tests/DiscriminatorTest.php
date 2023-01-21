@@ -9,14 +9,28 @@ use Vansari\OrmDiscriminatorExample\Entity\Customer;
 class DiscriminatorTest extends TestCase
 {
 
-    public function testInsert(): void
+    public function testInsertMariaDb(): void
     {
         $cust = new Customer();
         $cust->setFirstname('Max');
         $cust->setSurname('Mustermann');
         $cust->setStatus('Ex-Customer');
 
-        $em = \getEntityManager();
+        $em = \getMariaDbEntityManager();
+        $em->persist($cust);
+        $em->flush();
+
+        $this->assertNotEmpty($cust->getId());
+    }
+
+    public function testInsertPostgres(): void
+    {
+        $cust = new Customer();
+        $cust->setFirstname('Max');
+        $cust->setSurname('Mustermann');
+        $cust->setStatus('Ex-Customer');
+
+        $em = \getPostgresEntityManager();
         $em->persist($cust);
         $em->flush();
 

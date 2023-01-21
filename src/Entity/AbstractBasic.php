@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping\Table;
 #[Entity]
 #[Table(name: 'main', schema: 'public')]
 #[InheritanceType('SINGLE_TABLE')]
-#[DiscriminatorColumn(name: 'is_broker', type: 'int')]
+#[DiscriminatorColumn(name: 'is_broker', type: 'integer')]
 #[DiscriminatorMap(
     [
         1 => Broker::class,

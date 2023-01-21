@@ -8,6 +8,8 @@ services:
       MARIADB_PASSWORD: it-is-not-safe
       MARIADB_ROOT_PASSWORD: super-secret
       MARIADB_DATABASE: public
+    volumes:
+      - ./build/mariadb/main.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "3306:3306"
 
@@ -17,5 +19,7 @@ services:
       POSTGRES_USER: dummy
       POSTGRES_PASSWORD: it-is-not-safe
       POSTGRES_DB: public
+    volumes:
+      - ./build/postgres/main.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
