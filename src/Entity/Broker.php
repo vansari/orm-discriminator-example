@@ -9,4 +9,21 @@ use Doctrine\ORM\Mapping\Entity;
 class Broker extends AbstractBasic
 {
 
+    private ?string $brokernumber = null;
+
+    /**
+     * @return string|null
+     */
+    public function getBrokernumber(): ?string
+    {
+        return $this->brokernumber;
+    }
+
+    /**
+     * @param string|null $brokernumber
+     */
+    public function setBrokernumber(?string $brokernumber): void
+    {
+        $this->brokernumber = $brokernumber;
+    }
 }
