@@ -15,11 +15,11 @@ use Doctrine\ORM\Mapping\Table;
 #[Entity]
 #[Table(name: 'main', schema: 'public')]
 #[InheritanceType('SINGLE_TABLE')]
-#[DiscriminatorColumn(name: 'is_broker', type: 'integer')]
+#[DiscriminatorColumn(name: 'is_broker', type: 'integer', generated: 'ALWAYS')]
 #[DiscriminatorMap(
     [
         1 => Broker::class,
-        2 => Customer::class,
+        0 => Customer::class,
     ]
 )]
 class AbstractBasic
@@ -37,8 +37,10 @@ class AbstractBasic
     #[Column(type: 'string')]
     protected ?string $company = null;
 
-    #[Column(type: 'string')]
-    protected ?string $status = null;
+    #[Column(type: 'integer', nullable: false)]
+    protected int $status = 3;
+
+    protected int $isBroker = 0;
 
     public function getId(): int
     {
@@ -93,19 +95,21 @@ class AbstractBasic
         $this->company = $company;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getStatus(): ?string
+    public function getStatus(): int
     {
         return $this->status;
     }
 
-    /**
-     * @param string|null $status
-     */
-    public function setStatus(?string $status): void
+    public function setStatus(int $status): void
     {
         $this->status = $status;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getIsBroker(): ?int
+    {
+        return $this->isBroker;
     }
 }
