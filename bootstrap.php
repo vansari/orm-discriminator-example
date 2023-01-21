@@ -10,7 +10,10 @@ require_once 'vendor/autoload.php';
 function getEntityManager(): EntityManager
 {
     $config = ORMSetup::createAttributeMetadataConfiguration(
-        paths: [__DIR__ . '/src/Entity'],
+        paths: [
+            __DIR__ . '/src/',
+            __DIR__ . '/src/Entity/',
+        ],
         isDevMode: true
     );
 
