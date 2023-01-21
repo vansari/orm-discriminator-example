@@ -4,5 +4,5 @@ CREATE TABLE public.main (
     surname varchar(255),
     company varchar(255),
     status ENUM ('Customer', 'Ex-Customer', 'Broker', 'Subbroker'),
-    is_broker bool GENERATED ALWAYS AS (status IN ('Broker', 'Subbroker')) STORED
+    is_broker INTEGER GENERATED ALWAYS AS (IF(status IN ('Broker', 'Subbroker'), 1, 2)) STORED
 ) ENGINE = InnoDB;

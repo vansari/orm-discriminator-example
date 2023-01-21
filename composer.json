@@ -17,6 +17,11 @@
             "Vansari\\OrmDiscriminatorExample\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Vansari\\OrmDiscriminatorExample\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "vansari",

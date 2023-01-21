@@ -14,11 +14,11 @@ use Doctrine\ORM\Mapping\Table;
 #[Entity]
 #[Table(name: 'main', schema: 'public')]
 #[InheritanceType('SINGLE_TABLE')]
-#[DiscriminatorColumn(name: 'is_broker', type: 'boolean')]
+#[DiscriminatorColumn(name: 'is_broker', type: 'int')]
 #[DiscriminatorMap(
     [
-        true => Broker::class,
-        false => Customer::class,
+        1 => Broker::class,
+        2 => Customer::class,
     ]
 )]
 class AbstractBasic

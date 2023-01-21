@@ -5,10 +5,10 @@ CREATE TYPE public.status AS ENUM (
 );
 
 CREATE TABLE public.main (
-    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     firstname varchar(255),
     surname varchar(255),
     company varchar(255),
     status public.status NOT NULL,
-    is_broker bool GENERATED ALWAYS AS (status IN ('Broker', 'Subbroker')) STORED
+    is_broker integer GENERATED ALWAYS AS (CASE WHEN status IN ('Broker', 'Subbroker') THEN 1 ELSE 2 END) STORED
 );
