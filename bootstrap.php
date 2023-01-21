@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
@@ -7,7 +8,7 @@ use Doctrine\ORM\ORMSetup;
 require_once 'vendor/autoload.php';
 
 $config = ORMSetup::createAttributeMetadataConfiguration(
-    paths: [__DIR__ . '/src'],
+    paths: [__DIR__ . '/src/Entity'],
     isDevMode: true
 );
 $defaultParams = [
